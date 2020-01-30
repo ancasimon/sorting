@@ -1,5 +1,5 @@
 body {
-    background-color: grey;
+    background-color: lightgray;
 }
 
 .jumbotron {
@@ -13,3 +13,4 @@ body {
 .centered {
     justify-content: center;
 }
+
