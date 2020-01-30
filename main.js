@@ -7,54 +7,62 @@ const printToDom = (elementID, textToPrint) => {
 
 const buildForm = () => {
     const formContents = `
-        <div class="indented">
+        <div class="mx-auto" style="width: 1000px;">
             <h3>Enter First Year's Name</h3>
         </div>
-        <form class="form-inline centered">
-            <label class="my-1 mr-2" for="studentName">Student: </label>
+        <form class="form-inline mx-auto">
+            <label class="my-1 mr-2 mx-auto" for="studentName">Student:</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="studentName">
-            <button type="submit" id="add-button" class="btn btn-primary mb-2">Sort!</button>
+            <button type="submit" id="sort-student-button" class="btn btn-primary mb-2 mx-auto">Sort!</button>
         </form>
         `
     printToDom('form', formContents);
+    console.log("form");
 };
+
+let name = document.getElementById('studentName'); 
 
 const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
 const randomHouse = houses[Math.floor((Math.random() * houses.length) + 1)];
 console.log(randomHouse);
 
-const buildStudent = () => {
-    const studentInfo = 
-    {
-        name: studentName.value,
-        house: randomHouse
-    };
-    console.log(studentInfo);
-};
+const buildStudent = (name, house) => {
+        let studentInfo = "";
+        studentInfo = `
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${name}</h5>
+                        <p class="card-text">${randomHouse}</p>
+                        <button type="submit" id="expel-student-button" class="btn btn-primary mb-2">Expel</button>
+                </div>
+                </div>
+                `
+        printToDom('studentsList', studentInfo);
+    console.log("printing a student");
+        };
 
-const buildArray = () => {
-    const studentArray = [studentInfo];
-    studentInfo = `
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">${studentName}</h5>
-                    <p class="card-text">${houses.name}</p>
-                    <a href="#" class="btn btn-primary">Expel</a>
-            </div>
-            `
-
+const buildStudentArray = () => {
+    const studentArray = [""];
     studentArray.push(studentInfo);
-    printToDom('studentsList', "studentArray");
-}; 
+    console.log("added a student");
+    }; 
+    
+document.getElementById('start-sorting-button').addEventListener('click', buildForm);
 
-const events = () => {
-    document.getElementById('sorting-button').addEventListener('click', buildForm);
-    // document.getElementById('add-button').addEventListener('click', addStudent);
-};
+document.getElementById('sort-student-button').addEventListener('click', buildStudent);
 
-const init = () => {
-    events();
-};
 
-init();
+
+
+
+
+// // const events = () => {
+    
+// //     };
+
+// // const init = () => {
+// //     events();
+// //     };
+
+// // init();
