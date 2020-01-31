@@ -6,4 +6,19 @@ body {
     background-color: lightblue;
 }
 
+.gryf {
+    background-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Gryffindorcolours.svg/800px-Gryffindorcolours.svg.png";
+}
+
+.huf {
+    background-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hufflepuff_colours.svg/800px-Hufflepuff_colours.svg.png";
+}
+
+.raven {
+    background-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Ravenclawcolours.svg/800px-Ravenclawcolours.svg.png";
+}
+
+.slyth {
+    background-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Slytherin_colours.svg/800px-Slytherin_colours.svg.png";
+}
 
