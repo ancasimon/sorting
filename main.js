@@ -10,7 +10,7 @@ const buildForm = () => {
         <div class="mx-auto" style="width: 1000px;">
             <h3>Enter First Year's Name</h3>
         </div>
-        <form class="form-inline mx-auto">
+        <form class="form-inline mx-auto" onSubmit="checkName('studentName'); getStudentName(); assignHouse(); buildStudent();">
             <label class="my-1 mr-2 mx-auto" for="studentName">Student:</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="studentName">
             <button type="submit" id="sort-student-button" class="btn btn-primary mb-2 mx-auto">Sort!</button>
@@ -20,15 +20,28 @@ const buildForm = () => {
     console.log("form");
 };
 
-let name = document.getElementById('studentName'); 
+const checkName = (fieldId) => {
+    if (document.getElementById(fieldId).value === "") {
+        alert("You must enter a name before trying to sort the student!");
+    }
+};
 
-const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+const getStudentName = () => {
+    let name = document.getElementById('studentName'); 
+    console.log("it got a name!");
+}; 
 
-const randomHouse = houses[Math.floor((Math.random() * houses.length) + 1)];
-console.log(randomHouse);
+const assignHouse = () => {
+    const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+    const randomHouse = houses[Math.floor((Math.random() * houses.length) + 1)];
+    console.log(randomHouse);
+}; 
 
-const buildStudent = (name, house) => {
-        let studentInfo = "";
+const buildStudent = () => {
+        let studentInfo = {
+            name: document.getElementById('studentName'),
+            house: ""
+        };
         studentInfo = `
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -38,13 +51,14 @@ const buildStudent = (name, house) => {
                 </div>
                 </div>
                 `
-        printToDom('studentsList', studentInfo);
     console.log("printing a student");
         };
 
+
 const buildStudentArray = () => {
-    const studentArray = [""];
+    const studentArray = [];
     studentArray.push(studentInfo);
+    printToDom('studentsList', studentArray);
     console.log("added a student");
     }; 
     
@@ -53,16 +67,29 @@ document.getElementById('start-sorting-button').addEventListener('click', buildF
 document.getElementById('sort-student-button').addEventListener('click', buildStudent);
 
 
+const assignColors = () => {
+    for (let i = 0; i < studentArray.length; i++) {
+        if (randomHouse === "Gryffindor") {
+            <div class="gryf"></div>;
+        } else if (randomHouse === "Hufflepuff") {
+            <div class="huf"></div>;
+        } else if (randomHouse === "Ravenclaw") {
+            <div class="raven"></div>;
+        } else if (randomHouse === "Slytherin") {
+            <div class="slyth"></div>;
+        }   
+    }
+};
 
 
 
 
-// // const events = () => {
-    
-// //     };
+{/* const events = () => {
 
-// // const init = () => {
-// //     events();
-// //     };
+};
 
-// // init();
+const init = () => {
+    events();
+};
+
+init(); */}
