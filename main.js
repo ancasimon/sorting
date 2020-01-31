@@ -45,8 +45,8 @@ const buildStudent = () => {
         studentInfo = `
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <p class="card-text">${randomHouse}</p>
+                        <h5 class="card-title">${studentInfo.name}</h5>
+                        <p class="card-text">${studentInfo.house}</p>
                         <button type="submit" id="expel-student-button" class="btn btn-primary mb-2">Expel</button>
                 </div>
                 </div>
@@ -67,19 +67,19 @@ document.getElementById('start-sorting-button').addEventListener('click', buildF
 document.getElementById('sort-student-button').addEventListener('click', buildStudent);
 
 
-const assignColors = () => {
-    for (let i = 0; i < studentArray.length; i++) {
-        if (randomHouse === "Gryffindor") {
-            <div class="gryf"></div>;
-        } else if (randomHouse === "Hufflepuff") {
-            <div class="huf"></div>;
-        } else if (randomHouse === "Ravenclaw") {
-            <div class="raven"></div>;
-        } else if (randomHouse === "Slytherin") {
-            <div class="slyth"></div>;
-        }   
-    }
-};
+// const assignColors = () => {
+//     for (let i = 0; i < studentArray.length; i++) {
+//         if (randomHouse === "Gryffindor") {
+//             <div class="gryf"></div>;
+//         } else if (randomHouse === "Hufflepuff") {
+//             <div class="huf"></div>;
+//         } else if (randomHouse === "Ravenclaw") {
+//             <div class="raven"></div>;
+//         } else if (randomHouse === "Slytherin") {
+//             <div class="slyth"></div>;
+//         }   
+//     }
+// };
 
 
 
