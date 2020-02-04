@@ -5,7 +5,7 @@ const printToDom = (elementID, textToPrint) => {
     selectedDiv.innerHTML = textToPrint;
 };
 
-const activateEventListener = () => {
+const activateEventListenerSort = () => {
     document.getElementById('sort-student-button').addEventListener('click', buildStudent);
 };
 
@@ -14,7 +14,7 @@ const buildForm = () => {
         <div class="mx-auto" style="width: 1000px;">
             <h3>Enter First Year's Name</h3>
         </div>
-        <form class="form-inline mx-auto">
+        <form class="form-inline mx-auto" onSubmit="checkName('studentName');">
             <label class="my-1 mr-2 mx-auto" for="studentName">Student:</label>
             <input type="text" class="form-control mb-2 mr-sm-2" id="studentName">
             <button type="submit" id="sort-student-button" class="btn btn-primary mb-2 mx-auto">Sort!</button>
@@ -22,22 +22,22 @@ const buildForm = () => {
         `
     printToDom('form', formContents);
     console.log("the form to collect student name is working");
-    activateEventListener();
+    activateEventListenerSort();
 };
 
 const checkName = (fieldId) => {
     if (document.getElementById(fieldId).value === "") {
         alert("You must enter a name before trying to sort the student!");
     } else {
-        return false;
+        buildStudent();
     }
 };
 
-const checkFirst = () => {
-    if (checkName() === false) {
-       buildStudent();
-    }
-};
+// const checkFirst = (fieldID) => {
+//     if (checkName(studentName) === false) {
+//        buildStudent();
+//     }
+// };
 
 const getStudentName = () => {
     let name = document.getElementById('studentName').value; 
@@ -65,61 +65,79 @@ const buildStudent = (e) => {
     buildStudentArray(studentArray);
 };
 
-const activateExpelEventListener = () => {
-    document.getElementById('expel-student-button').addEventListener('click', expel);
-};
+// const activateExpelEventListenerExpel = () => {
+//     document.getElementById('expel-student-button').addEventListener('click', expel);
+// };
 
 const buildStudentArray = (list) => {
     let domString = '';
     for (let i=0; i < list.length; i++) {
-        domString += '<div class="card row col-md-6 col-lg-4 mx-5 my-5 w-25" style="width: 18rem;">';
-        domString += '<div class="card-body">';
+        domString += '<div class="row row-cols-1 row-cols-md-3">';
+        domString += '<div class="col mb-4">';
+        domString += '<div class="card text-white h-100" style="width: 18rem;">';
+        if (list[i].house === "Gryffindor") {
+            domString += '<div class="card-body gryffindor">';
+            } else if (list[i].house === "Hufflepuff") {
+                domString += '<div class="card-body hufflepuff">';
+            } else if (list[i].house === "Ravenclaw") {
+                domString += '<div class="card-body ravenclaw">';
+            } else if (list[i].house === "Slytherin") {
+                domString += '<div class="card-body slytherin">';
+            }   
         domString += `<h5 class="card-title">${list[i].name}</h5>`;
         domString += `<p class="card-text">${list[i].house}</p>`;
-        domString += `<button type="submit" id="expel-student-button" class="btn btn-primary mb-2">Expel</button>`;
+        domString += `<button type="submit" id="expel-student-button" class="btn btn-primary mb-2 expel">Expel</button>`;
+        domString += '</div>';
+        domString += '</div>';
         domString += '</div>';
         domString += '</div>';
     };
     printToDom('studentsList', domString);
     console.log("added a student");
+    document.getElementById('studentName').value='';
     }; 
-    
-const expel = () => {
-    console.log("testign expel button");
-    studentArray.slice();
-}
+
+console.log(studentArray);
+
+const expel = (id) => {
+    const removedStudents = undefined; 
+    for (let i=0; i < studentArray.length; i++) {
+        removedStudents = studentArray.slice(studentArray[i].id);
+    buildStudentArray(studentArray);
+    console.log("testing expel button");
+    // expel(list[i].id);
+    // activateEventListenerExpel();
+    printToDom('studentsList', domString);
+};
+};
 
 document.getElementById('start-sorting-button').addEventListener('click', buildForm);
 
-document.getElementsByName('expel').addEventListener('click', expel);
+// document.getElementById('expel-student-button').addEventListener('click', expel);
+
+// document.getElementsByName('expel').addEventListener('click', expel);
+
+const activateEventListenerExpel = () => {
+    let listeners = document.getElementsByClassName('expel');
+    for (let i = 0; i < listeners.length; i++) {
+      listeners[i].addEventListener ('click', (e) => {
+        e.target.parentElement.parentElement.remove();
+      })
+    }
+  };
+
+activateEventListenerExpel();
+  
+document.getElementsByClassName('expel').addEventListener('click', expel);
 
 
 
+// const events = () => {
 
+//  };
 
-// const assignColors = () => {
-//     for (let i = 0; i < studentArray.length; i++) {
-//         if (randomHouse === "Gryffindor") {
-//             <div class="gryf"></div>;
-//         } else if (randomHouse === "Hufflepuff") {
-//             <div class="huf"></div>;
-//         } else if (randomHouse === "Ravenclaw") {
-//             <div class="raven"></div>;
-//         } else if (randomHouse === "Slytherin") {
-//             <div class="slyth"></div>;
-//         }   
-//     }
+// const init = () => {
+//    events();
 // };
 
-
-
-
-const events = () => {
-
- };
-
-const init = () => {
-   events();
-};
-
-init();
+// init();
