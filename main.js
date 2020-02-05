@@ -65,9 +65,9 @@ const buildStudent = (e) => {
     buildStudentArray(studentArray);
 };
 
-// const activateExpelEventListenerExpel = () => {
-//     document.getElementById('expel-student-button').addEventListener('click', expel);
-// };
+const activateExpelEventListenerExpel = () => {
+    document.getElementById('expel-student-button').addEventListener('click', expel);
+};
 
 const buildStudentArray = (list) => {
     let domString = '';
@@ -99,10 +99,16 @@ const buildStudentArray = (list) => {
 
 console.log(studentArray);
 
-const expel = (id) => {
-    const removedStudents = undefined; 
+// get index of object with id:37
+// var removeIndex = apps.map(function(item) { return item.id; }).indexOf(studentArray[i].id);
+
+// remove object
+// apps.splice(removeIndex, studentArray[i].id);
+
+const expel = (e) => {
+    const removedStudents = []; 
     for (let i=0; i < studentArray.length; i++) {
-        removedStudents = studentArray.slice(studentArray[i].id);
+        removedStudents = studentArray[i].slice();
     buildStudentArray(studentArray);
     console.log("testing expel button");
     // expel(list[i].id);
